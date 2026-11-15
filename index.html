@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="kk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Abylai &amp; Sezim</title>
+  <meta name="description" content="Сізді тойға шақырамыз. Ашу үшін конвертті басыңыз.">
+  <meta name="theme-color" content="#c9d1ee">
+  <meta property="og:title" content="Сізді шақырамыз">
+  <meta property="og:description" content="Ашу үшін конвертті басыңыз.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..600&family=Noto+Serif+Display:ital,wght@0,400..700;1,400..700&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js"></script>
+</head>
+<body class="is-sealed">
+<!--
+THESIS: The link is stationery, not a website. It arrives sealed; the guest opens it with a tap and the invitation physically comes out. Refuses the category default of a photo hero with a countdown and a nav bar.
+OWN-WORLD: Powder-blue envelope stock with fibre grain, blind-embossed copperplate monogram, deep navy liner printed with a fine motif, cotton-white cards letterpressed in navy ink with Bodoni capitals and Pinyon script. Cards lie on the blue ground at slight angles like a laid-out suite.
+STORY: The guest feels personally invited, reads the formal invitation, then finds when, where, what to wear and the order of the day, and can add it to their calendar.
+FIRST VIEWPORT: The back of the envelope fills the phone screen, flap closed, its tip just below centre carrying the embossed monogram; "Tap to open" in spaced small caps near the bottom. Desktop: the same envelope as an object on the blue ground. The whole envelope is the button.
+FORM: Brief-pinned (user reference image of a pale blue envelope save-the-date); no roll.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+-->
+
+  <!-- ============ Envelope intro ============ -->
+  <div class="intro" id="intro">
+    <button class="envelope" id="envelope" type="button" aria-label="Шақыруды ашу">
+      <span class="env-inside" aria-hidden="true"></span>
+
+      <span class="letter" aria-hidden="true">
+        <span class="letter-inner">
+          <span class="letter-kicker">Сізді шақырамыз</span>
+          <span class="letter-names">
+            <span data-field="partnerOne.first">Abylai</span>
+            <span class="amp">&amp;</span>
+            <span data-field="partnerTwo.first">Sezim</span>
+          </span>
+          <span class="letter-date" data-field="dateShort">27 · 03 · 27</span>
+        </span>
+      </span>
+
+      <span class="env-pocket" aria-hidden="true">
+        <span class="pocket-side pocket-left"></span>
+        <span class="pocket-side pocket-right"></span>
+        <span class="pocket-bottom"></span>
+      </span>
+
+      <span class="env-flap" aria-hidden="true">
+        <span class="flap-front"></span>
+        <span class="flap-back"></span>
+      </span>
+
+      <span class="monogram" aria-hidden="true">
+        <span data-field="monogram.left">A</span><span class="mono-amp">&amp;</span><span data-field="monogram.right">S</span>
+      </span>
+
+      <span class="env-light" aria-hidden="true"></span>
+    </button>
+    <span class="tap-hint" aria-hidden="true">Ашу үшін басыңыз</span>
+  </div>
+
+  <!-- <button class="music" id="music" type="button" aria-label="Музыканы қосу" aria-pressed="false" hidden>
+    <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+    <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 5.5h3v13h-3zM13.5 5.5h3v13h-3z"/></svg>
+  </button> -->
+  <audio id="audio" loop preload="auto"></audio>
+
+  <!-- ============ The suite ============ -->
+  <main class="suite" id="suite">
+
+    <div class="hero">
+      <article class="card card-invite" data-settle>
+        <div class="card-border">
+          <!-- p class="small-caps" data-field="hosts">Екі отбасының атынан</p>  -->
+          <h1 class="names">
+            <span class="name" data-field="partnerOne.full">Abylai</span>
+            <span class="name">&amp;</span>
+            <span class="name" data-field="partnerTwo.full">Sezim</span>
+          </h1>
+          <p class="request">сіздерді үйлену тойына<br>арнайы шақырады</p>
+          <p class="when">
+            <span data-field="dateWords.day">Сенбі</span>,
+            <span data-field="dateWords.date">27 наурыз</span><br>
+            <span data-field="dateWords.year">2027 жыл</span><br>
+            <span data-field="dateWords.time">сағат 15:00-де</span>
+          </p>
+          <p class="where">
+            <span class="small-caps" data-field="ceremony.name">Emerald Hall</span><br>
+            <span data-field="ceremony.address">143-й учетный квартал, ст760</span>
+          </p>
+          <p class="to-follow">Reception to follow</p>
+        </div>
+      </article>
+
+      <p class="countdown" id="countdown"></p>
+    </div>
+
+    <article class="card card-details" data-settle>
+      <h2 class="card-title">Толық ақпарат</h2>
+      <div class="details-grid">
+        <section class="detail">
+          <h3 class="small-caps">Рәсім</h3>
+          <p class="detail-time" data-field="ceremony.time">сағат 15:00</p>
+          <p class="detail-place" data-field="ceremony.name">Emerald Hall</p>
+          <p class="detail-address" data-field="ceremony.address">143-й учетный квартал, ст760</p>
+          <a class="text-link" data-href="ceremony.mapUrl" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg>
+            Маршрут
+          </a>
+        </section>
+        <div class="detail-rule" aria-hidden="true"></div>
+        <section class="detail">
+          <h3 class="small-caps">Банкет</h3>
+          <p class="detail-time" data-field="reception.time">сағат 17:30</p>
+          <p class="detail-place" data-field="reception.name">Банкет залының атауы</p>
+          <p class="detail-address" data-field="reception.address">Мекенжайы</p>
+          <a class="text-link" data-href="reception.mapUrl" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg>
+            Маршрут
+          </a>
+        </section>
+      </div>
+      <div class="attire">
+        <h3 class="small-caps">Киім форматы</h3>
+        <p class="attire-title" data-field="dressCode.title">Салтанатты, көк реңктерде</p>
+        <p class="attire-note" data-field="dressCode.note"></p>
+        <ul class="swatches" aria-label="Ұсынылатын түстер">
+          <li style="--c:#e9eef6"><span>Тұман</span></li>
+          <li style="--c:#b9c9e2"><span>Ақшыл көк</span></li>
+          <li style="--c:#8095b8"><span>Сұр-көк</span></li>
+          <li style="--c:#44557a"><span>Ымырт</span></li>
+          <li style="--c:#1f2c4a"><span>Қою көк</span></li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="card card-schedule" data-settle>
+      <h2 class="card-title">Күн тәртібі</h2>
+      <ol class="schedule" id="schedule"></ol>
+    </article>
+
+    <article class="vellum" data-settle>
+      <p class="note" data-field="note"></p>
+      <p class="signature">
+        <span data-field="partnerOne.first">Abylai</span> &amp; <span data-field="partnerTwo.first">Sezim</span>
+      </p>
+    </article>
+
+    <article class="card card-stay" data-settle>
+      <h2 class="card-title">Тұратын орын</h2>
+      <ul class="stay" id="stay"></ul>
+    </article>
+
+    <article class="card card-reply" data-settle>
+      <div class="card-border">
+        <h2 class="card-title">Жауап күтеміз</h2>
+        <p class="reply-by"><span data-field="rsvp.by">2027 жылғы 1 наурызға дейін</span></p>
+        <div class="reply-lines" aria-hidden="true">
+          <span>Есімі</span><i></i>
+          <span class="reply-options"><b>қуанышпен қатысады</b><b>өкінішке қарай қатыса алмайды</b></span>
+        </div>
+        <a class="button" id="rsvp-link" href="#" target="_blank" rel="noopener" hidden>Онлайн жауап беру</a>
+        <p class="reply-pending" id="rsvp-pending">Жауап беру тәсілі туралы мәліметті кейінірек хабарлаймыз.</p>
+      </div>
+    </article>
+
+    <article class="card card-faq" data-settle>
+      <h2 class="card-title">Білгеніңіз жөн</h2>
+      <div class="faq" id="faq"></div>
+    </article>
+
+    <footer class="closing">
+      <p class="closing-mono" aria-hidden="true">
+        <span data-field="monogram.left">A</span><span class="mono-amp">&amp;</span><span data-field="monogram.right">S</span>
+      </p>
+      <p class="small-caps closing-date" data-field="dateShort">27 · 03 · 27</p>
+      <button class="button button-ghost" id="add-cal" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14.5" rx="1.5"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg>
+        Күнтізбеге қосу
+      </button>
+      <button class="text-link reseal" id="reseal" type="button">Конвертті қайта жабу</button>
+    </footer>
+  </main>
+
+
+  <script src="main.js"></script>
+</body>
+</html>
